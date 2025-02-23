@@ -1,4 +1,4 @@
-package com.ditsdev.ngopi
+package com.ditsdev.ngopi.ui.theme.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
@@ -16,6 +16,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.ditsdev.ngopi.R
 import com.ditsdev.ngopi.model.Category
 import com.ditsdev.ngopi.ui.theme.NgopiTheme
 
