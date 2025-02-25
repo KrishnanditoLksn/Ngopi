@@ -20,10 +20,15 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.ditsdev.ngopi.model.Menu
+import com.ditsdev.ngopi.model.dummyBestSellerMenu
 import com.ditsdev.ngopi.model.dummyCategory
+import com.ditsdev.ngopi.model.dummyMenu
 import com.ditsdev.ngopi.ui.theme.NgopiTheme
+import com.ditsdev.ngopi.ui.theme.components.CardMenuItem
+import com.ditsdev.ngopi.ui.theme.components.CategoryItem
+import com.ditsdev.ngopi.ui.theme.components.HomeSection
 import com.ditsdev.ngopi.ui.theme.components.Search
-import com.ditsdev.ngopi.ui.theme.components.SectionText
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,8 +46,18 @@ class MainActivity : ComponentActivity() {
 fun NgopiApp() {
     Column {
         Banner()
-        SectionText(stringResource(R.string.section_category))
-        CategoryRow()
+        HomeSection(
+            title = stringResource(R.string.section_category),
+            content = { CategoryRow() }
+        )
+        HomeSection(
+            title = stringResource(R.string.section_favorite_menu),
+            content = { MenuRow(dummyMenu) }
+        )
+        HomeSection(
+            title = stringResource(R.string.section_best_seller_menu),
+            content = { MenuRow(dummyBestSellerMenu) }
+        )
     }
 }
 
@@ -78,6 +93,22 @@ fun CategoryRow(
     ) {
         items(dummyCategory, key = { it.textCategory }) { category ->
             CategoryItem(category)
+        }
+    }
+}
+
+@Composable
+fun MenuRow(
+    menu: List<Menu>,
+    modifier: Modifier = Modifier
+) {
+    LazyRow(
+        horizontalArrangement = Arrangement.spacedBy(16.dp),
+        contentPadding = PaddingValues(horizontal = 16.dp),
+        modifier = modifier
+    ) {
+        items(menu, key = { it.title }) { menu ->
+            CardMenuItem(menu)
         }
     }
 }
