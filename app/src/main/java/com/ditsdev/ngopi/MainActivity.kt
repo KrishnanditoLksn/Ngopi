@@ -1,5 +1,6 @@
 package com.ditsdev.ngopi
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -13,6 +14,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
@@ -25,6 +27,7 @@ import com.ditsdev.ngopi.model.dummyBestSellerMenu
 import com.ditsdev.ngopi.model.dummyCategory
 import com.ditsdev.ngopi.model.dummyMenu
 import com.ditsdev.ngopi.ui.theme.NgopiTheme
+import com.ditsdev.ngopi.ui.theme.components.BottomBar
 import com.ditsdev.ngopi.ui.theme.components.CardMenuItem
 import com.ditsdev.ngopi.ui.theme.components.CategoryItem
 import com.ditsdev.ngopi.ui.theme.components.HomeSection
@@ -42,22 +45,28 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun NgopiApp() {
-    Column {
-        Banner()
-        HomeSection(
-            title = stringResource(R.string.section_category),
-            content = { CategoryRow() }
-        )
-        HomeSection(
-            title = stringResource(R.string.section_favorite_menu),
-            content = { MenuRow(dummyMenu) }
-        )
-        HomeSection(
-            title = stringResource(R.string.section_best_seller_menu),
-            content = { MenuRow(dummyBestSellerMenu) }
-        )
+    Scaffold(
+        bottomBar = { BottomBar() }
+    ) {
+        Column {
+            Banner()
+            HomeSection(
+                title = stringResource(R.string.section_category),
+                content = { CategoryRow() }
+            )
+            HomeSection(
+                title = stringResource(R.string.section_favorite_menu),
+                content = { MenuRow(dummyMenu) }
+            )
+            HomeSection(
+                title = stringResource(R.string.section_best_seller_menu),
+                content = { MenuRow(dummyBestSellerMenu) }
+            )
+        }
     }
 }
 
