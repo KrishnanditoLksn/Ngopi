@@ -1,6 +1,9 @@
 package com.ditsdev.ngopi.ui.theme
 
 import androidx.compose.material3.Typography
+import androidx.compose.material3.darkColorScheme
+import androidx.compose.material3.lightColorScheme
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -31,4 +34,15 @@ val Typography = Typography(
         letterSpacing = 0.5.sp
     )
     */
+)
+
+private val DarkColorScheme = darkColorScheme(
+    primary = LightCoffeeBrown,
+    secondary = LightCoffeeBrown
+)
+
+private val LightColorScheme = lightColorScheme(
+    primary = CoffeeBrown,
+    secondary = CoffeeBrown,
+    background = Color.White
 )
